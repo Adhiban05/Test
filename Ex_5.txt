@@ -1,0 +1,67 @@
+Ex_5 : Demonstrate the use of Scroll view and List view.
+
+MainActivity.java
+
+package com.example.ex_5;
+
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ListView listView = findViewById(R.id.listView);
+
+        String[] items = {
+                "Android",
+                "Java",
+                "Python",
+                "Kotlin",
+                "C++",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "XML",
+                "SQL",
+                "PHP",
+                "Flutter",
+                "React Native"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                items
+        );
+
+        listView.setAdapter(adapter);
+    }
+}
+
+activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ListView Example"
+        android:textSize="22sp"
+        android:padding="20dp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp" />
+
+</LinearLayout>

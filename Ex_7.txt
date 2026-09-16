@@ -1,0 +1,51 @@
+Ex_7 : Create activity with Portrait and Landscape mode.
+
+MainActivity.java
+
+package com.example.ex_7;
+
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    boolean portrait = true;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(v -> {
+            if (portrait) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                button.setText("Landscape");
+                portrait = false;
+            } else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                button.setText("Portrait");
+                portrait = true;
+            }
+        });
+    }
+}
+
+Activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Portrait" />
+
+</LinearLayout>
