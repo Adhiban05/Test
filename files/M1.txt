@@ -1,0 +1,54 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(
+    r"/content/drive/MyDrive/ML_Lab/EX_1/Placement_Data_Full_Class.csv"
+)
+
+print("Dataset loaded successfully!")
+
+print(df[["ssc_p", "hsc_p", "degree_p"]].head())
+plt.hist(df["ssc_p"], bins=10)
+
+plt.xlabel("SSC Percentage")
+plt.ylabel("Number of Students")
+plt.title("Distribution of SSC Percentage")
+
+plt.show()
+
+plt.scatter(
+    df[df["status"] == "Placed"]["ssc_p"],
+    df[df["status"] == "Placed"]["degree_p"],
+    color="green",
+    label="Placed"
+)
+
+plt.scatter(
+    df[df["status"] == "Not Placed"]["ssc_p"],
+    df[df["status"] == "Not Placed"]["degree_p"],
+    color="red",
+    label="Not Placed"
+)
+
+plt.xlabel("SSC Percentage")
+plt.ylabel("Degree Percentage")
+plt.title("SSC Percentage vs Degree Percentage")
+
+plt.legend()
+plt.show()
+
+
+
+status_count = df["status"].value_counts()
+
+plt.bar(
+    status_count.index,
+    status_count.values
+)
+
+plt.xlabel("Placement Status")
+plt.ylabel("Number of Students")
+plt.title("Placement Status")
+
+plt.show()

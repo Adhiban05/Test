@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import missingno as mn
+
+df = pd.read_csv(
+    r"/content/drive/MyDrive/ML_Lab/EX_1/Placement_Data_Full_Class.csv"
+)
+print(df.head())
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+df["salary"] = df["salary"].fillna(df["salary"].median())
+
+print("\nAfter Preprocessing:")
+print(df.isnull().sum())
+
+missing = df.isnull().sum()
+mn.matrix(df)
+plt.bar(missing.index, missing.values)
+plt.xlabel("Columns")
+plt.ylabel("Number of Missing Values")
+plt.title("Missing Values in Dataset")
+plt.xticks(rotation=45)
+plt.show()

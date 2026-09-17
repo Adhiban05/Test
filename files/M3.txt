@@ -1,0 +1,28 @@
+from sklearn.datasets import load_iris
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+# Display first 5 rows
+print(df.head())
+
+# Basic statistics
+print(df.describe())
+plt.scatter(
+    df["sepal length (cm)"],
+    df["sepal width (cm)"]
+)
+plt.xlabel("Sepal Length")
+plt.ylabel("Sepal Width")
+plt.title("Scatter Plot")
+plt.show()
+
+# Visualization 2: Histogram
+plt.hist(df["sepal length (cm)"], bins=10)
+plt.xlabel("Sepal Length")
+plt.ylabel("Frequency")
+plt.title("Histogram of Sepal Length")
+plt.show()
